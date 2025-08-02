@@ -34,7 +34,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     });
   });
 
-  function searchCodes() {
+function searchCodes() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const codeSections = document.querySelectorAll(".code-section");
 
@@ -42,23 +42,28 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   codeSections.forEach(section => {
     const listItems = section.querySelectorAll("li");
+    let sectionHasVisibleItems = false;
+
     listItems.forEach(li => {
       const codeName = li.textContent.toLowerCase();
-      if (codeName.includes(input)) {
-        li.style.display = "list-item";
-        section.style.display = "block";
-        found = true;
-      } else {
-        li.style.display = "none";
-      }
+      const match = codeName.includes(input);
+      li.style.display = match ? "list-item" : "none";
+      if (match) sectionHasVisibleItems = true;
     });
 
-    // If none of the items in this section match, hide the section
-    const visibleItems = Array.from(listItems).filter(li => li.style.display !== "none");
-    section.style.display = visibleItems.length > 0 ? "block" : "none";
+    section.style.display = sectionHasVisibleItems ? "block" : "none";
+    if (sectionHasVisibleItems) found = true;
   });
 
-  if (!found) {
+  if (!found && input !== "") {
     alert("No matching code found.");
+  }
+
+  if (input === "") {
+    // Reset view if search is cleared
+    document.querySelectorAll(".code-section").forEach(section => {
+      section.style.display = "block";
+      section.querySelectorAll("li").forEach(li => li.style.display = "list-item");
+    });
   }
 }
