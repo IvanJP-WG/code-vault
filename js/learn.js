@@ -38,8 +38,6 @@ function searchCodes() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const codeSections = document.querySelectorAll(".code-section");
 
-  let found = false;
-
   codeSections.forEach(section => {
     const listItems = section.querySelectorAll("li");
     let sectionHasVisibleItems = false;
@@ -52,15 +50,9 @@ function searchCodes() {
     });
 
     section.style.display = sectionHasVisibleItems ? "block" : "none";
-    if (sectionHasVisibleItems) found = true;
   });
 
-  if (!found && input !== "") {
-    alert("No matching code found.");
-  }
-
   if (input === "") {
-    // Reset view if search is cleared
     document.querySelectorAll(".code-section").forEach(section => {
       section.style.display = "block";
       section.querySelectorAll("li").forEach(li => li.style.display = "list-item");

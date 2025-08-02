@@ -28,15 +28,13 @@
 
   <!-- Main Content -->
   <main>
-    <section class="search-bar">
-      <div class="container">
-        <input type="text" id="searchInput" placeholder="Search a code to learn..." />
-        <button onclick="searchCodes()">Search</button>
-      </div>
-    </section>
-
     <section id="text" class="code-section">
-      <h2 class="code-category">Text Encodings</h2>
+      <div class="code-header">
+        <h2 class="code-category">Text Encodings</h2>
+        <div class="search-bar-inline">
+          <input type="text" id="searchInput" placeholder="🔍 Search..." oninput="searchCodes()" />
+        </div>
+      </div>
       <ul class="code-list">
         <li>Morse Code</li>
         <li>Binary Code</li>
