@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeVault - Decrypt the Unknown</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="CodeVault Logo" class="logo" />
+        <h1 class="scramble">codevauLT</h1>
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="learn.html" class="scramble">Learn</a></li>
+          <li><a href="encrypt.html" class="scramble">Encrypt</a></li>
+          <li><a href="decrypt.html" class="scramble">Decrypt</a></li>
+          <li><a href="#more" class="scramble">More</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="textbox">
+    <h1>Decrypt Your Text</h1>
+    <textarea id="inputText" placeholder="Paste your encrypted text here..."></textarea>
+
+    <div class="custom-select-container">
+      <input type="text" id="codeSearchInput" placeholder="Search Code..." onkeyup="filterCodes()" />
+      <div id="codeOptions" class="custom-select-options">
+        <div data-value="binary">Binary</div>
+        <div data-value="morse">Morse Code</div>
+        <div data-value="ascii">ASCII</div>
+        <div data-value="hex">Hexadecimal</div>
+        <div data-value="caesar">Caesar Cipher</div>
+        <div data-value="base13">Base13</div>
+        <div data-value="vignere">Vigenère Cipher</div>
+        <div data-value="atbash">Atbash Cipher</div>
+        <div data-value="rot13">ROT13</div>
+        <div data-value="railfence">Rail Fence Cipher</div>
+        <div data-value="qr">QR Code</div>
+        <div data-value="barcode">Barcode</div>
+        <div data-value="utf8">UTF-8</div>
+        <div data-value="huffman">Huffman</div>
+      </div>
+      <input type="hidden" id="codeType">
+    </div>
+
+    <div id="detectedTypeDisplay" class="detected-type"></div>
+
+    <div class="encrypt-option">
+      <button id="decryptBtn" class="encrypt-button">Decrypt</button>
+    </div>
+
+    <div class="output-wrapper">
+      <h2>Here is your Decrypted Message</h2>
+      <div class="output-box" id="outputBox"></div>
+    </div>
+
+    <div id="encryptingOverlay" style="display: none;" class="encrypting-box">
+      <p class="encrypt-text">Decrypting your message...</p>
+      <div class="encrypt-content">
+          <img src="assets/logo.png" alt="Loading..." class="rotating-logo" />
+          <button id="cancelEncrypt">Cancel</button>
+      </div>
+    </div>
+
+    <script src="js/decrypt.js"></script>
+</body>
+</html>
